@@ -1,0 +1,33 @@
+menu "Configuracion OTA"
+
+    config OTA_WIFI_SSID
+        string "SSID de la red Wi-Fi"
+        default ""
+        help
+            Nombre de la red Wi-Fi a la que se conecta el ESP32 (obligatorio).
+
+    config OTA_WIFI_PASSWORD
+        string "Contrasena de la red Wi-Fi"
+        default ""
+        help
+            Dejar vacio solo para redes abiertas.
+
+    config OTA_WIFI_MAX_RETRY
+        int "Reintentos maximos de conexion Wi-Fi"
+        default 5
+
+    config OTA_SERVER_URL
+        string "URL del firmware en el servidor HTTPS"
+        default "https://192.168.1.50:8070/firmware_v2.bin"
+        help
+            Debe coincidir con la IP usada al generar el certificado.
+
+    config OTA_TIMEOUT_MS
+        int "Timeout HTTP (ms)"
+        default 10000
+
+    config OTA_SKIP_SAME_VERSION
+        bool "Omitir la actualizacion si la version es igual a la instalada"
+        default y
+
+endmenu

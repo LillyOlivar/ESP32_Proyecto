@@ -1,0 +1,38 @@
+menu "Configuracion IA / SHT31"
+
+    config AI_USE_SIMULATED_SAMPLES
+        bool "Usar muestras simuladas (valores de prueba de los codigos originales)"
+        default y
+        help
+            Si esta activo no se usa el sensor. Desactivar para leer un SHT31 real
+            (requiere configurar los pines I2C).
+
+    config AI_SAMPLE_PERIOD_MS
+        int "Periodo entre muestras (ms)"
+        default 2000
+
+    config SHT31_I2C_SDA_GPIO
+        int "GPIO de SDA (-1 = sin configurar)"
+        default -1
+        help
+            Depende de su cableado. No hay valor por defecto.
+
+    config SHT31_I2C_SCL_GPIO
+        int "GPIO de SCL (-1 = sin configurar)"
+        default -1
+
+    config SHT31_I2C_ADDR
+        hex "Direccion I2C del SHT31"
+        default 0x44
+        help
+            0x44 (pin ADDR a GND) o 0x45 (pin ADDR a VDD), segun la hoja de datos.
+
+    config SHT31_I2C_FREQ_HZ
+        int "Frecuencia del bus I2C (Hz)"
+        default 100000
+
+    config SHT31_INTERNAL_PULLUP
+        bool "Activar pull-ups internos del ESP32 en SDA/SCL"
+        default n
+
+endmenu

@@ -1,0 +1,6 @@
+# Tabla de particiones personalizada (guia OTA, seccion 2)
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="partitions.csv"
+CONFIG_PARTITION_TABLE_FILENAME="partitions.csv"
+# Las dos particiones OTA (2 x 1500K) requieren al menos 4 MB de flash
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
