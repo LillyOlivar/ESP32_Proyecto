@@ -34,5 +34,5 @@ git push -u origin main
 (Cree antes el repositorio vacío en GitHub y reemplace la URL.) `.gitignore` excluye claves y certificados: nunca suba `server.key`.
 
 ## Verificación realizada y pendiente
-- Verificado: algoritmos compilados y ejecutados en PC con gcc; servidor HTTPS probado localmente con `curl`.
-- **No verificado**: compilación con ESP-IDF, OTA real, SHT31 y generación de Doxygen (sin ESP-IDF ni Doxygen en este entorno).
+- Verificado: ambos proyectos compilan con ESP-IDF v6.1 para `esp32` (ESP-WROOM-32); algoritmos ejecutados en PC con gcc; servidor HTTPS probado localmente con `curl`; documentacion Doxygen generada (Doxygen 1.18.0).
+- **No verificado** (sin cable USB para flashear): OTA real en el dispositivo y lectura del SHT31.

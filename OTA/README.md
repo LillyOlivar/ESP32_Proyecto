@@ -10,7 +10,7 @@ Actualización de firmware por Wi-Fi y HTTPS siguiendo la guía OTA del proyecto
 - `partitions.csv`: `ota_0` y `ota_1` de 1500K (requiere flash de **4 MB**), `sdkconfig.defaults`, `version.txt`.
 
 ## Requisitos
-ESP-IDF 5.x, Python 3, OpenSSL, PC y ESP32 en la misma red.
+ESP-IDF 6.1 (compilado para `esp32`), Python 3, OpenSSL, PC y ESP32 en la misma red.
 
 ## Pasos
 1. **Certificado** (PC): `cd server && ./gen_cert.sh 192.168.1.50` (use la IP real de su PC; genera `server.crt/key` y copia el `.crt` a `main/certs/`).

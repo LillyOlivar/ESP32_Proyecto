@@ -8,7 +8,7 @@
 | Integración | `app_main` que llama a ambos algoritmos | `main.c` |
 
 ## Uso
-Requiere ESP-IDF ≥ 5.2 (API `i2c_master`).
+Compilado con ESP-IDF v6.1 para `esp32` (usa `i2c_master` y el componente `esp_driver_i2c`; requiere ESP-IDF 5.2 o superior).
 - **Sin hardware** (por defecto): `idf.py build flash monitor` ejecuta las 8 muestras de los códigos originales.
 - **Con SHT31**: `idf.py menuconfig` → *Configuracion IA / SHT31*: desactive las muestras simuladas y configure SDA, SCL, dirección (0x44/0x45). Los pines no tienen valor por defecto: dependen de su cableado.
 
