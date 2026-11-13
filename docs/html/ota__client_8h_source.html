@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESP32 - OTA e Inteligencia Artificial: Archivo de código fuente C:/Users/LILY/Downloads/ESP32_Proyecto/OTA/main/ota_client.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ESP32 - OTA e Inteligencia Artificial<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">OTA por HTTPS, K-Means y TinyML Monitor con SHT31</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('ota__client_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">ota_client.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="ota__client_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#ifndef OTA_CLIENT_H</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#define OTA_CLIENT_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span> </div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span></div>
+<div class="foldopen" id="foldopen00022" data-start="{" data-end="};">
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="structota__client__config__t.html">   22</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structota__client__config__t.html#a9ae0fd2978a72034b473c8704f578893">   23</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="structota__client__config__t.html#a9ae0fd2978a72034b473c8704f578893">url</a>;          </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structota__client__config__t.html#a38835792999fd4d3f50e83bde707653d">   24</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="structota__client__config__t.html#a38835792999fd4d3f50e83bde707653d">cert_pem</a>;     </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structota__client__config__t.html#a4101d501d12a2762f7fa35eb8a665f17">   25</a></span>    <span class="keywordtype">int</span>         <a class="code hl_variable" href="structota__client__config__t.html#a4101d501d12a2762f7fa35eb8a665f17">timeout_ms</a>;   </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structota__client__config__t.html#a11cc0dd19bdfd26585d8f3dd71cd9527">   26</a></span>    <span class="keywordtype">bool</span>        <a class="code hl_variable" href="structota__client__config__t.html#a11cc0dd19bdfd26585d8f3dd71cd9527">skip_same_version</a>; </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>} <a class="code hl_struct" href="structota__client__config__t.html">ota_client_config_t</a>;</div>
+</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span><span class="keywordtype">void</span> <a class="code hl_function" href="ota__client_8c.html#a73f3a20196666c7a71a3dc0203c3879d">ota_client_log_running_info</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span></div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>esp_err_t <a class="code hl_function" href="ota__client_8c.html#a16a646b90d555eaf36d5611ce81133a4">ota_client_run</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structota__client__config__t.html">ota_client_config_t</a> *cfg);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>esp_err_t <a class="code hl_function" href="ota__client_8c.html#a789b0375cd8c75012f2ad91d6921f17c">ota_client_start_task</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structota__client__config__t.html">ota_client_config_t</a> *cfg);</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#endif </span><span class="comment">/* OTA_CLIENT_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="aota__client_8c_html_a16a646b90d555eaf36d5611ce81133a4"><div class="ttname"><a href="ota__client_8c.html#a16a646b90d555eaf36d5611ce81133a4">ota_client_run</a></div><div class="ttdeci">esp_err_t ota_client_run(const ota_client_config_t *cfg)</div><div class="ttdoc">Descarga, valida e instala un firmware (bloqueante).</div><div class="ttdef"><b>Definición</b> <a href="ota__client_8c_source.html#l00045">ota_client.c:45</a></div></div>
+<div class="ttc" id="aota__client_8c_html_a73f3a20196666c7a71a3dc0203c3879d"><div class="ttname"><a href="ota__client_8c.html#a73f3a20196666c7a71a3dc0203c3879d">ota_client_log_running_info</a></div><div class="ttdeci">void ota_client_log_running_info(void)</div><div class="ttdoc">Registra en consola la version y la particion en ejecucion.</div><div class="ttdef"><b>Definición</b> <a href="ota__client_8c_source.html#l00032">ota_client.c:32</a></div></div>
+<div class="ttc" id="aota__client_8c_html_a789b0375cd8c75012f2ad91d6921f17c"><div class="ttname"><a href="ota__client_8c.html#a789b0375cd8c75012f2ad91d6921f17c">ota_client_start_task</a></div><div class="ttdeci">esp_err_t ota_client_start_task(const ota_client_config_t *cfg)</div><div class="ttdoc">Crea una tarea que ejecuta ota_client_run() y reinicia si tiene exito.</div><div class="ttdef"><b>Definición</b> <a href="ota__client_8c_source.html#l00152">ota_client.c:152</a></div></div>
+<div class="ttc" id="astructota__client__config__t_html"><div class="ttname"><a href="structota__client__config__t.html">ota_client_config_t</a></div><div class="ttdoc">Configuracion del cliente OTA.</div><div class="ttdef"><b>Definición</b> <a href="#l00022">ota_client.h:22</a></div></div>
+<div class="ttc" id="astructota__client__config__t_html_a11cc0dd19bdfd26585d8f3dd71cd9527"><div class="ttname"><a href="structota__client__config__t.html#a11cc0dd19bdfd26585d8f3dd71cd9527">ota_client_config_t::skip_same_version</a></div><div class="ttdeci">bool skip_same_version</div><div class="ttdef"><b>Definición</b> <a href="#l00026">ota_client.h:26</a></div></div>
+<div class="ttc" id="astructota__client__config__t_html_a38835792999fd4d3f50e83bde707653d"><div class="ttname"><a href="structota__client__config__t.html#a38835792999fd4d3f50e83bde707653d">ota_client_config_t::cert_pem</a></div><div class="ttdeci">const char * cert_pem</div><div class="ttdef"><b>Definición</b> <a href="#l00024">ota_client.h:24</a></div></div>
+<div class="ttc" id="astructota__client__config__t_html_a4101d501d12a2762f7fa35eb8a665f17"><div class="ttname"><a href="structota__client__config__t.html#a4101d501d12a2762f7fa35eb8a665f17">ota_client_config_t::timeout_ms</a></div><div class="ttdeci">int timeout_ms</div><div class="ttdef"><b>Definición</b> <a href="#l00025">ota_client.h:25</a></div></div>
+<div class="ttc" id="astructota__client__config__t_html_a9ae0fd2978a72034b473c8704f578893"><div class="ttname"><a href="structota__client__config__t.html#a9ae0fd2978a72034b473c8704f578893">ota_client_config_t::url</a></div><div class="ttdeci">const char * url</div><div class="ttdef"><b>Definición</b> <a href="#l00023">ota_client.h:23</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_85e46b776c2a44b6f879effa464f18f8.html">OTA</a></li><li class="navelem"><a href="dir_570da533bbf3cb08878b63b1506cbd81.html">main</a></li><li class="navelem"><a href="ota__client_8h.html">ota_client.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

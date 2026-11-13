@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESP32 - OTA e Inteligencia Artificial: Archivo de código fuente C:/Users/LILY/Downloads/ESP32_Proyecto/AI_ESP32/main/tinyml_monitor.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ESP32 - OTA e Inteligencia Artificial<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">OTA por HTTPS, K-Means y TinyML Monitor con SHT31</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('tinyml__monitor_8h_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">tinyml_monitor.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="tinyml__monitor_8h.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#ifndef TINYML_MONITOR_H</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#define TINYML_MONITOR_H</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &lt;stdbool.h&gt;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;esp_err.h&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span></div>
+<div class="foldopen" id="foldopen00023" data-start="{" data-end="};">
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html">   23</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html#a0cad3e6ead04003372a54b5fc2d0b6f7">   24</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structsensor__insights__t.html#a0cad3e6ead04003372a54b5fc2d0b6f7">temp_c</a>;        </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html#ade36c3d0e6566f0fb0991a7b19695944">   25</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structsensor__insights__t.html#ade36c3d0e6566f0fb0991a7b19695944">humidity_pct</a>;  </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html#a509e6f78bac5ecb9e1ca0934f9a6d2f3">   26</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structsensor__insights__t.html#a509e6f78bac5ecb9e1ca0934f9a6d2f3">dew_point_c</a>;   </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html#aee4b0a2690e875d9acc58d69821fdd11">   27</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structsensor__insights__t.html#aee4b0a2690e875d9acc58d69821fdd11">vpd_kpa</a>;       </div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html#a3a49f585e6789f0cbf24ff5662d0676b">   28</a></span>    <span class="keywordtype">float</span> <a class="code hl_variable" href="structsensor__insights__t.html#a3a49f585e6789f0cbf24ff5662d0676b">anomaly_score</a>; </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="structsensor__insights__t.html#aa822d5afc7cd3e2ae2fbc6c8d146305b">   29</a></span>    <span class="keywordtype">bool</span>  <a class="code hl_variable" href="structsensor__insights__t.html#aa822d5afc7cd3e2ae2fbc6c8d146305b">is_anomaly</a>;    </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>} <a class="code hl_struct" href="structsensor__insights__t.html">sensor_insights_t</a>;</div>
+</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="tinyml__monitor_8h.html#a773c7ddafecf5b998874b02bd00e64c9">   33</a></span><span class="preprocessor">#define TRAIN_TEMP_MEAN 25.0f  </span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno"><a class="line" href="tinyml__monitor_8h.html#a1fded2032caa798e4bc1c27c2692706e">   34</a></span><span class="preprocessor">#define TRAIN_TEMP_STD  5.0f   </span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno"><a class="line" href="tinyml__monitor_8h.html#a8bb98d34e07e64241fbcdd8f383ae08b">   35</a></span><span class="preprocessor">#define TRAIN_HUM_MEAN  60.0f  </span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="tinyml__monitor_8h.html#a741eee2e6a72290da8f9068712124b97">   36</a></span><span class="preprocessor">#define TRAIN_HUM_STD   15.0f  </span><span class="preprocessor"></span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="tinyml__monitor_8h.html#a3db51bb94df12b3fe4f5710867ea596f">   40</a></span><span class="preprocessor">#define ANOMALY_THRESHOLD 2.5f</span></div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>esp_err_t <a class="code hl_function" href="tinyml__monitor_8c.html#a1eb7c1220361a4cb79f60968bf42a469">tinyml_monitor_process</a>(<span class="keywordtype">float</span> temp_c, <span class="keywordtype">float</span> humidity_pct, <a class="code hl_struct" href="structsensor__insights__t.html">sensor_insights_t</a> *out);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span><span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#endif </span><span class="comment">/* TINYML_MONITOR_H */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="astructsensor__insights__t_html"><div class="ttname"><a href="structsensor__insights__t.html">sensor_insights_t</a></div><div class="ttdoc">Resultado del procesamiento de una lectura.</div><div class="ttdef"><b>Definición</b> <a href="#l00023">tinyml_monitor.h:23</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_a0cad3e6ead04003372a54b5fc2d0b6f7"><div class="ttname"><a href="structsensor__insights__t.html#a0cad3e6ead04003372a54b5fc2d0b6f7">sensor_insights_t::temp_c</a></div><div class="ttdeci">float temp_c</div><div class="ttdef"><b>Definición</b> <a href="#l00024">tinyml_monitor.h:24</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_a3a49f585e6789f0cbf24ff5662d0676b"><div class="ttname"><a href="structsensor__insights__t.html#a3a49f585e6789f0cbf24ff5662d0676b">sensor_insights_t::anomaly_score</a></div><div class="ttdeci">float anomaly_score</div><div class="ttdef"><b>Definición</b> <a href="#l00028">tinyml_monitor.h:28</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_a509e6f78bac5ecb9e1ca0934f9a6d2f3"><div class="ttname"><a href="structsensor__insights__t.html#a509e6f78bac5ecb9e1ca0934f9a6d2f3">sensor_insights_t::dew_point_c</a></div><div class="ttdeci">float dew_point_c</div><div class="ttdef"><b>Definición</b> <a href="#l00026">tinyml_monitor.h:26</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_aa822d5afc7cd3e2ae2fbc6c8d146305b"><div class="ttname"><a href="structsensor__insights__t.html#aa822d5afc7cd3e2ae2fbc6c8d146305b">sensor_insights_t::is_anomaly</a></div><div class="ttdeci">bool is_anomaly</div><div class="ttdef"><b>Definición</b> <a href="#l00029">tinyml_monitor.h:29</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_ade36c3d0e6566f0fb0991a7b19695944"><div class="ttname"><a href="structsensor__insights__t.html#ade36c3d0e6566f0fb0991a7b19695944">sensor_insights_t::humidity_pct</a></div><div class="ttdeci">float humidity_pct</div><div class="ttdef"><b>Definición</b> <a href="#l00025">tinyml_monitor.h:25</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_aee4b0a2690e875d9acc58d69821fdd11"><div class="ttname"><a href="structsensor__insights__t.html#aee4b0a2690e875d9acc58d69821fdd11">sensor_insights_t::vpd_kpa</a></div><div class="ttdeci">float vpd_kpa</div><div class="ttdef"><b>Definición</b> <a href="#l00027">tinyml_monitor.h:27</a></div></div>
+<div class="ttc" id="atinyml__monitor_8c_html_a1eb7c1220361a4cb79f60968bf42a469"><div class="ttname"><a href="tinyml__monitor_8c.html#a1eb7c1220361a4cb79f60968bf42a469">tinyml_monitor_process</a></div><div class="ttdeci">esp_err_t tinyml_monitor_process(float temp_c, float humidity_pct, sensor_insights_t *out)</div><div class="ttdoc">Procesa una lectura: punto de rocio, VPD y deteccion de anomalia.</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8c_source.html#l00052">tinyml_monitor.c:52</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_3f145e4dd0e30461c9c1a4b980939627.html">AI_ESP32</a></li><li class="navelem"><a href="dir_956f94f7e9d431fc4cb7310cb9a78512.html">main</a></li><li class="navelem"><a href="tinyml__monitor_8h.html">tinyml_monitor.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

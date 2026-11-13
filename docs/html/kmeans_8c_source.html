@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESP32 - OTA e Inteligencia Artificial: Archivo de código fuente C:/Users/LILY/Downloads/ESP32_Proyecto/AI_ESP32/main/kmeans.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ESP32 - OTA e Inteligencia Artificial<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">OTA por HTTPS, K-Means y TinyML Monitor con SHT31</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('kmeans_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">kmeans.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="kmeans_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;math.h&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="kmeans_8h.html">kmeans.h</a>&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span></div>
+<div class="foldopen" id="foldopen00013" data-start="{" data-end="};">
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="structcluster__t.html">   13</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="structcluster__t.html#a82fb33a4bbc205103e2ad92be8031ebf">   14</a></span>    <span class="keywordtype">int</span>         <a class="code hl_variable" href="structcluster__t.html#a82fb33a4bbc205103e2ad92be8031ebf">id</a>;                    </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="structcluster__t.html#a3acb7704097e01b3ea741f674e2b837b">   15</a></span>    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="structcluster__t.html#a3acb7704097e01b3ea741f674e2b837b">label</a>;                 </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="structcluster__t.html#a4a51c045b7f8cb880fb12e01089d6079">   16</a></span>    <span class="keywordtype">float</span>       <a class="code hl_variable" href="structcluster__t.html#a4a51c045b7f8cb880fb12e01089d6079">centroid</a>[<a class="code hl_define" href="kmeans_8h.html#ac2bca8adbc07c70e5c38d1d34a5568bb">NUM_FEATURES</a>]; </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>} <a class="code hl_struct" href="structcluster__t.html">cluster_t</a>;</div>
+</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="kmeans_8c.html#ad7d20c7d1ec1729bf6892ddabbac3ab0">   21</a></span><span class="preprocessor">#define TEMP_MIN 0.0f</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="kmeans_8c.html#a9acb14595bfb9523655370c1bb477506">   22</a></span><span class="preprocessor">#define TEMP_MAX 50.0f</span></div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="kmeans_8c.html#aa32e95dc12ed32e6c395aafb6c083cc3">   23</a></span><span class="preprocessor">#define HUM_MIN  0.0f</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="kmeans_8c.html#ad780c5087e79ab6a7497e6f489bf5ba0">   24</a></span><span class="preprocessor">#define HUM_MAX  100.0f</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span></div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="};">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">   31</a></span><span class="keyword">static</span> <span class="keyword">const</span> <a class="code hl_struct" href="structcluster__t.html">cluster_t</a> <a class="code hl_variable" href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">clusters</a>[<a class="code hl_define" href="kmeans_8h.html#ab9318edb8bf068fb4bd394fc5f9937fb">K_CLUSTERS</a>] = {</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    { .id = 0, .label = <span class="stringliteral">&quot;Ambiente Fresco / Nocturno&quot;</span>,         .centroid = {0.30f, 0.70f} }, <span class="comment">/* ~15 C, 70 %RH */</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    { .id = 1, .label = <span class="stringliteral">&quot;Operación Confort / Normal&quot;</span>,         .centroid = {0.48f, 0.50f} }, <span class="comment">/* ~24 C, 50 %RH */</span></div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    { .id = 2, .label = <span class="stringliteral">&quot;Alta Temp / Alerta Condensación&quot;</span>,    .centroid = {0.76f, 0.85f} }  <span class="comment">/* ~38 C, 85 %RH */</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>};</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span></div>
+<div class="foldopen" id="foldopen00044" data-start="{" data-end="}">
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="kmeans_8c.html#a4ec9ccb25d3402fa3094c407dee9a920">   44</a></span><span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">float</span> <a class="code hl_function" href="kmeans_8c.html#a4ec9ccb25d3402fa3094c407dee9a920">normalize</a>(<span class="keywordtype">float</span> val, <span class="keywordtype">float</span> min, <span class="keywordtype">float</span> max)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>{</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">if</span> (val &lt; min) <span class="keywordflow">return</span> 0.0f;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (val &gt; max) <span class="keywordflow">return</span> 1.0f;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    <span class="keywordflow">return</span> (val - min) / (max - min);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="foldopen" id="foldopen00051" data-start="{" data-end="}">
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="kmeans_8c.html#a6b222a7db4099c71cd07cd42ca0e8696">   51</a></span>esp_err_t <a class="code hl_function" href="kmeans_8c.html#a6b222a7db4099c71cd07cd42ca0e8696">kmeans_predict</a>(<span class="keywordtype">float</span> temp, <span class="keywordtype">float</span> humidity, <a class="code hl_struct" href="structkmeans__result__t.html">kmeans_result_t</a> *result)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (result == NULL || isnan(temp) || isnan(humidity)) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="keywordflow">return</span> ESP_ERR_INVALID_ARG;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#a218e16392564556e21a14113779547eb">cluster_id</a> = -1;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#ad7b633810ad8d453677916111d1ea298">cluster_label</a> = <span class="stringliteral">&quot;Desconocido&quot;</span>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">min_distance</a> = 1e9f;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    <span class="comment">/* 1. Normalizar para dar igual peso a Temp y Humedad */</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    <span class="keywordtype">float</span> norm_feat[<a class="code hl_define" href="kmeans_8h.html#ac2bca8adbc07c70e5c38d1d34a5568bb">NUM_FEATURES</a>];</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    norm_feat[0] = <a class="code hl_function" href="kmeans_8c.html#a4ec9ccb25d3402fa3094c407dee9a920">normalize</a>(temp, <a class="code hl_define" href="kmeans_8c.html#ad7d20c7d1ec1729bf6892ddabbac3ab0">TEMP_MIN</a>, <a class="code hl_define" href="kmeans_8c.html#a9acb14595bfb9523655370c1bb477506">TEMP_MAX</a>);</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    norm_feat[1] = <a class="code hl_function" href="kmeans_8c.html#a4ec9ccb25d3402fa3094c407dee9a920">normalize</a>(humidity, <a class="code hl_define" href="kmeans_8c.html#aa32e95dc12ed32e6c395aafb6c083cc3">HUM_MIN</a>, <a class="code hl_define" href="kmeans_8c.html#ad780c5087e79ab6a7497e6f489bf5ba0">HUM_MAX</a>);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="comment">/* 2. Centroide mas cercano (distancia euclidiana al cuadrado, sin sqrtf en el bucle) */</span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; <a class="code hl_define" href="kmeans_8h.html#ab9318edb8bf068fb4bd394fc5f9937fb">K_CLUSTERS</a>; i++) {</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordtype">float</span> d_temp = norm_feat[0] - <a class="code hl_variable" href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">clusters</a>[i].<a class="code hl_variable" href="structcluster__t.html#a4a51c045b7f8cb880fb12e01089d6079">centroid</a>[0];</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        <span class="keywordtype">float</span> d_hum  = norm_feat[1] - <a class="code hl_variable" href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">clusters</a>[i].<a class="code hl_variable" href="structcluster__t.html#a4a51c045b7f8cb880fb12e01089d6079">centroid</a>[1];</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordtype">float</span> dist_sq = (d_temp * d_temp) + (d_hum * d_hum);</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>        <span class="keywordflow">if</span> (dist_sq &lt; result-&gt;min_distance) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">min_distance</a> = dist_sq;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#a218e16392564556e21a14113779547eb">cluster_id</a> = <a class="code hl_variable" href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">clusters</a>[i].<a class="code hl_variable" href="structcluster__t.html#a82fb33a4bbc205103e2ad92be8031ebf">id</a>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>            result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#ad7b633810ad8d453677916111d1ea298">cluster_label</a> = <a class="code hl_variable" href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">clusters</a>[i].<a class="code hl_variable" href="structcluster__t.html#a3acb7704097e01b3ea741f674e2b837b">label</a>;</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">/* 3. Distancia euclidiana real como metrica final */</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">min_distance</a> = sqrtf(result-&gt;<a class="code hl_variable" href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">min_distance</a>);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordflow">return</span> ESP_OK;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>}</div>
+</div>
+<div class="ttc" id="akmeans_8c_html_a183fbad415521c23fbd7b9b8d416683e"><div class="ttname"><a href="kmeans_8c.html#a183fbad415521c23fbd7b9b8d416683e">clusters</a></div><div class="ttdeci">static const cluster_t clusters[K_CLUSTERS]</div><div class="ttdoc">Centroides pre-entrenados (offline/Python o Edge Impulse), en espacio normalizado.</div><div class="ttdef"><b>Definición</b> <a href="#l00031">kmeans.c:31</a></div></div>
+<div class="ttc" id="akmeans_8c_html_a4ec9ccb25d3402fa3094c407dee9a920"><div class="ttname"><a href="kmeans_8c.html#a4ec9ccb25d3402fa3094c407dee9a920">normalize</a></div><div class="ttdeci">static float normalize(float val, float min, float max)</div><div class="ttdoc">Escala un valor al rango [0, 1] (Min-Max), saturando fuera de rango.</div><div class="ttdef"><b>Definición</b> <a href="#l00044">kmeans.c:44</a></div></div>
+<div class="ttc" id="akmeans_8c_html_a6b222a7db4099c71cd07cd42ca0e8696"><div class="ttname"><a href="kmeans_8c.html#a6b222a7db4099c71cd07cd42ca0e8696">kmeans_predict</a></div><div class="ttdeci">esp_err_t kmeans_predict(float temp, float humidity, kmeans_result_t *result)</div><div class="ttdoc">Clasifica una muestra [Temp, RH] en el cluster mas cercano.</div><div class="ttdef"><b>Definición</b> <a href="#l00051">kmeans.c:51</a></div></div>
+<div class="ttc" id="akmeans_8c_html_a9acb14595bfb9523655370c1bb477506"><div class="ttname"><a href="kmeans_8c.html#a9acb14595bfb9523655370c1bb477506">TEMP_MAX</a></div><div class="ttdeci">#define TEMP_MAX</div><div class="ttdef"><b>Definición</b> <a href="#l00022">kmeans.c:22</a></div></div>
+<div class="ttc" id="akmeans_8c_html_aa32e95dc12ed32e6c395aafb6c083cc3"><div class="ttname"><a href="kmeans_8c.html#aa32e95dc12ed32e6c395aafb6c083cc3">HUM_MIN</a></div><div class="ttdeci">#define HUM_MIN</div><div class="ttdef"><b>Definición</b> <a href="#l00023">kmeans.c:23</a></div></div>
+<div class="ttc" id="akmeans_8c_html_ad780c5087e79ab6a7497e6f489bf5ba0"><div class="ttname"><a href="kmeans_8c.html#ad780c5087e79ab6a7497e6f489bf5ba0">HUM_MAX</a></div><div class="ttdeci">#define HUM_MAX</div><div class="ttdef"><b>Definición</b> <a href="#l00024">kmeans.c:24</a></div></div>
+<div class="ttc" id="akmeans_8c_html_ad7d20c7d1ec1729bf6892ddabbac3ab0"><div class="ttname"><a href="kmeans_8c.html#ad7d20c7d1ec1729bf6892ddabbac3ab0">TEMP_MIN</a></div><div class="ttdeci">#define TEMP_MIN</div><div class="ttdef"><b>Definición</b> <a href="#l00021">kmeans.c:21</a></div></div>
+<div class="ttc" id="akmeans_8h_html"><div class="ttname"><a href="kmeans_8h.html">kmeans.h</a></div><div class="ttdoc">Clasificacion ambiental con K-Means (K = 3) sobre temperatura y humedad.</div></div>
+<div class="ttc" id="akmeans_8h_html_ab9318edb8bf068fb4bd394fc5f9937fb"><div class="ttname"><a href="kmeans_8h.html#ab9318edb8bf068fb4bd394fc5f9937fb">K_CLUSTERS</a></div><div class="ttdeci">#define K_CLUSTERS</div><div class="ttdoc">Numero de grupos/estados a identificar.</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00021">kmeans.h:21</a></div></div>
+<div class="ttc" id="akmeans_8h_html_ac2bca8adbc07c70e5c38d1d34a5568bb"><div class="ttname"><a href="kmeans_8h.html#ac2bca8adbc07c70e5c38d1d34a5568bb">NUM_FEATURES</a></div><div class="ttdeci">#define NUM_FEATURES</div><div class="ttdoc">Numero de variables: [0] temperatura (C), [1] humedad (%).</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00023">kmeans.h:23</a></div></div>
+<div class="ttc" id="astructcluster__t_html"><div class="ttname"><a href="structcluster__t.html">cluster_t</a></div><div class="ttdoc">Definicion de un cluster: id, etiqueta y centroide normalizado [Temp, RH].</div><div class="ttdef"><b>Definición</b> <a href="#l00013">kmeans.c:13</a></div></div>
+<div class="ttc" id="astructcluster__t_html_a3acb7704097e01b3ea741f674e2b837b"><div class="ttname"><a href="structcluster__t.html#a3acb7704097e01b3ea741f674e2b837b">cluster_t::label</a></div><div class="ttdeci">const char * label</div><div class="ttdef"><b>Definición</b> <a href="#l00015">kmeans.c:15</a></div></div>
+<div class="ttc" id="astructcluster__t_html_a4a51c045b7f8cb880fb12e01089d6079"><div class="ttname"><a href="structcluster__t.html#a4a51c045b7f8cb880fb12e01089d6079">cluster_t::centroid</a></div><div class="ttdeci">float centroid[NUM_FEATURES]</div><div class="ttdef"><b>Definición</b> <a href="#l00016">kmeans.c:16</a></div></div>
+<div class="ttc" id="astructcluster__t_html_a82fb33a4bbc205103e2ad92be8031ebf"><div class="ttname"><a href="structcluster__t.html#a82fb33a4bbc205103e2ad92be8031ebf">cluster_t::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definición</b> <a href="#l00014">kmeans.c:14</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html"><div class="ttname"><a href="structkmeans__result__t.html">kmeans_result_t</a></div><div class="ttdoc">Resultado de la inferencia K-Means.</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00026">kmeans.h:26</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html_a1bff0f58edd5df5ba9db3545871c30e8"><div class="ttname"><a href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">kmeans_result_t::min_distance</a></div><div class="ttdeci">float min_distance</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00029">kmeans.h:29</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html_a218e16392564556e21a14113779547eb"><div class="ttname"><a href="structkmeans__result__t.html#a218e16392564556e21a14113779547eb">kmeans_result_t::cluster_id</a></div><div class="ttdeci">int cluster_id</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00027">kmeans.h:27</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html_ad7b633810ad8d453677916111d1ea298"><div class="ttname"><a href="structkmeans__result__t.html#ad7b633810ad8d453677916111d1ea298">kmeans_result_t::cluster_label</a></div><div class="ttdeci">const char * cluster_label</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00028">kmeans.h:28</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_3f145e4dd0e30461c9c1a4b980939627.html">AI_ESP32</a></li><li class="navelem"><a href="dir_956f94f7e9d431fc4cb7310cb9a78512.html">main</a></li><li class="navelem"><a href="kmeans_8c.html">kmeans.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

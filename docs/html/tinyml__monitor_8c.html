@@ -1,0 +1,325 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESP32 - OTA e Inteligencia Artificial: Referencia del archivo C:/Users/LILY/Downloads/ESP32_Proyecto/AI_ESP32/main/tinyml_monitor.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ESP32 - OTA e Inteligencia Artificial<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">OTA por HTTPS, K-Means y TinyML Monitor con SHT31</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('tinyml__monitor_8c.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo tinyml_monitor.c</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementacion del monitor TinyML (Z-Score bivariado + distancia euclidiana).  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &lt;math.h&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="tinyml__monitor_8h_source.html">tinyml_monitor.h</a>&quot;</code><br />
+</div>
+<p><a href="tinyml__monitor_8c_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:a3b2c41992205068854fe4497a89b06ab" id="r_a3b2c41992205068854fe4497a89b06ab"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a3b2c41992205068854fe4497a89b06ab">calculate_dew_point</a> (float temp, float rh)</td></tr>
+<tr class="memdesc:a3b2c41992205068854fe4497a89b06ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Punto de rocio (C) con la formula de Magnus (a = 17.27, b = 237.7).  <br /></td></tr>
+<tr class="memitem:a0e220e0696e86a7dd4a8576659b57b88" id="r_a0e220e0696e86a7dd4a8576659b57b88"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a0e220e0696e86a7dd4a8576659b57b88">calculate_vpd</a> (float temp, float rh)</td></tr>
+<tr class="memdesc:a0e220e0696e86a7dd4a8576659b57b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deficit de presion de vapor (kPa) = SVP - AVP.  <br /></td></tr>
+<tr class="memitem:a02ad938eee1b1dae598ae9de1cf1fa88" id="r_a02ad938eee1b1dae598ae9de1cf1fa88"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a02ad938eee1b1dae598ae9de1cf1fa88">calculate_anomaly_score</a> (float temp, float rh)</td></tr>
+<tr class="memdesc:a02ad938eee1b1dae598ae9de1cf1fa88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Score de anomalia: distancia euclidiana en el espacio Z-Score (T, RH).  <br /></td></tr>
+<tr class="memitem:a1eb7c1220361a4cb79f60968bf42a469" id="r_a1eb7c1220361a4cb79f60968bf42a469"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#a1eb7c1220361a4cb79f60968bf42a469">tinyml_monitor_process</a> (float temp_c, float humidity_pct, <a class="el" href="structsensor__insights__t.html">sensor_insights_t</a> *out)</td></tr>
+<tr class="memdesc:a1eb7c1220361a4cb79f60968bf42a469"><td class="mdescLeft">&#160;</td><td class="mdescRight">Procesa una lectura: punto de rocio, VPD y deteccion de anomalia.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Implementacion del monitor TinyML (Z-Score bivariado + distancia euclidiana). </p>
+<dl class="section author"><dt>Autor</dt><dd>Proyecto Enfasis II EI </dd></dl>
+<dl class="section version"><dt>Versión</dt><dd>1.0.0 </dd></dl>
+<dl class="section date"><dt>Fecha</dt><dd>2026-11-12 </dd></dl>
+
+<p class="definition">Definición en el archivo <a class="el" href="tinyml__monitor_8c_source.html">tinyml_monitor.c</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="a02ad938eee1b1dae598ae9de1cf1fa88" name="a02ad938eee1b1dae598ae9de1cf1fa88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02ad938eee1b1dae598ae9de1cf1fa88">&#9670;&#160;</a></span>calculate_anomaly_score()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float calculate_anomaly_score </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>rh</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Score de anomalia: distancia euclidiana en el espacio Z-Score (T, RH). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">temp</td><td>Temperatura en C. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rh</td><td>Humedad relativa en %. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Score (&gt;= 0). </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="tinyml__monitor_8c_source.html#l00045">45</a> del archivo <a class="el" href="tinyml__monitor_8c_source.html">tinyml_monitor.c</a>.</p>
+
+</div>
+</div>
+<a id="a3b2c41992205068854fe4497a89b06ab" name="a3b2c41992205068854fe4497a89b06ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b2c41992205068854fe4497a89b06ab">&#9670;&#160;</a></span>calculate_dew_point()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float calculate_dew_point </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>rh</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Punto de rocio (C) con la formula de Magnus (a = 17.27, b = 237.7). </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">temp</td><td>Temperatura en C. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rh</td><td>Humedad relativa en % (&gt; 0). </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>Punto de rocio en C. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="tinyml__monitor_8c_source.html#l00018">18</a> del archivo <a class="el" href="tinyml__monitor_8c_source.html">tinyml_monitor.c</a>.</p>
+
+</div>
+</div>
+<a id="a0e220e0696e86a7dd4a8576659b57b88" name="a0e220e0696e86a7dd4a8576659b57b88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e220e0696e86a7dd4a8576659b57b88">&#9670;&#160;</a></span>calculate_vpd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float calculate_vpd </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>rh</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deficit de presion de vapor (kPa) = SVP - AVP. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">temp</td><td>Temperatura en C. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">rh</td><td>Humedad relativa en %. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>VPD en kPa. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="tinyml__monitor_8c_source.html#l00032">32</a> del archivo <a class="el" href="tinyml__monitor_8c_source.html">tinyml_monitor.c</a>.</p>
+
+</div>
+</div>
+<a id="a1eb7c1220361a4cb79f60968bf42a469" name="a1eb7c1220361a4cb79f60968bf42a469"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1eb7c1220361a4cb79f60968bf42a469">&#9670;&#160;</a></span>tinyml_monitor_process()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t tinyml_monitor_process </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>temp_c</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>humidity_pct</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structsensor__insights__t.html">sensor_insights_t</a> *</td>          <td class="paramname"><span class="paramname"><em>out</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Procesa una lectura: punto de rocio, VPD y deteccion de anomalia. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">temp_c</td><td>Temperatura en C (finita, entre -40 y 125, rango del SHT31). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">humidity_pct</td><td>Humedad relativa en % (finita, 0 &lt; RH &lt;= 100). </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Resultado (no NULL).</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>ESP_OK; ESP_ERR_INVALID_ARG si out es NULL o las entradas estan fuera de rango (RH = 0 haria indefinido el logaritmo del punto de rocio).</dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Cuando is_anomaly es true, la aplicacion puede decidir marcar el evento o aumentar el muestreo; esa logica y la escritura en MicroSD NO estan implementadas en este modulo. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="tinyml__monitor_8c_source.html#l00052">52</a> del archivo <a class="el" href="tinyml__monitor_8c_source.html">tinyml_monitor.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_3f145e4dd0e30461c9c1a4b980939627.html">AI_ESP32</a></li><li class="navelem"><a href="dir_956f94f7e9d431fc4cb7310cb9a78512.html">main</a></li><li class="navelem"><a href="tinyml__monitor_8c.html">tinyml_monitor.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

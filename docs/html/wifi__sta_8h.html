@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESP32 - OTA e Inteligencia Artificial: Referencia del archivo C:/Users/LILY/Downloads/ESP32_Proyecto/OTA/main/wifi_sta.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ESP32 - OTA e Inteligencia Artificial<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">OTA por HTTPS, K-Means y TinyML Monitor con SHT31</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('wifi__sta_8h.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referencia del archivo wifi_sta.h</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Conexion Wi-Fi en modo estacion (STA) para el cliente OTA.  
+<a href="#details">Más...</a></p>
+<div class="textblock"><code>#include &quot;esp_err.h&quot;</code><br />
+<code>#include &quot;freertos/FreeRTOS.h&quot;</code><br />
+</div>
+<p><a href="wifi__sta_8h_source.html">Ir al código fuente de este archivo.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funciones</h2></td></tr>
+<tr class="memitem:afdd9a504d0b1462d9dee3ae3e8d8a63a" id="r_afdd9a504d0b1462d9dee3ae3e8d8a63a"><td class="memItemLeft">esp_err_t&#160;</td><td class="memItemRight"><a class="el" href="#afdd9a504d0b1462d9dee3ae3e8d8a63a">wifi_sta_connect</a> (const char *ssid, const char *password, int max_retry, TickType_t timeout)</td></tr>
+<tr class="memdesc:afdd9a504d0b1462d9dee3ae3e8d8a63a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Conecta el ESP32 a una red Wi-Fi y espera a obtener direccion IP.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descripción detallada</h2>
+<div class="textblock"><p>Conexion Wi-Fi en modo estacion (STA) para el cliente OTA. </p>
+<dl class="section author"><dt>Autor</dt><dd>Proyecto Enfasis II EI </dd></dl>
+<dl class="section version"><dt>Versión</dt><dd>1.0.0 </dd></dl>
+<dl class="section date"><dt>Fecha</dt><dd>2026-11-12 </dd></dl>
+
+<p class="definition">Definición en el archivo <a class="el" href="wifi__sta_8h_source.html">wifi_sta.h</a>.</p>
+</div><a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Documentación de funciones</h2>
+<a id="afdd9a504d0b1462d9dee3ae3e8d8a63a" name="afdd9a504d0b1462d9dee3ae3e8d8a63a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdd9a504d0b1462d9dee3ae3e8d8a63a">&#9670;&#160;</a></span>wifi_sta_connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">esp_err_t wifi_sta_connect </td>
+          <td>(</td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>ssid</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *</td>          <td class="paramname"><span class="paramname"><em>password</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>max_retry</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TickType_t</td>          <td class="paramname"><span class="paramname"><em>timeout</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Conecta el ESP32 a una red Wi-Fi y espera a obtener direccion IP. </p>
+<dl class="params"><dt>Parámetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">ssid</td><td>SSID de la red (no NULL ni vacio). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">password</td><td>Contrasena (NULL o "" para red abierta). </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">max_retry</td><td>Reintentos maximos tras una desconexion. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">timeout</td><td>Tiempo maximo de espera en ticks de FreeRTOS.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Devuelve</dt><dd>ESP_OK si se obtuvo IP; ESP_ERR_INVALID_ARG si el SSID es invalido; ESP_FAIL si se agotaron los reintentos; ESP_ERR_TIMEOUT si vencio el tiempo.</dd></dl>
+<dl class="section note"><dt>Nota</dt><dd>Requiere haber llamado antes a nvs_flash_init(), esp_netif_init() y esp_event_loop_create_default(). </dd></dl>
+<dl class="section warning"><dt>Atención</dt><dd>Debe llamarse una sola vez. </dd></dl>
+
+<p class="definition">Definición en la línea <a class="el" href="wifi__sta_8c_source.html#l00056">56</a> del archivo <a class="el" href="wifi__sta_8c_source.html">wifi_sta.c</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_85e46b776c2a44b6f879effa464f18f8.html">OTA</a></li><li class="navelem"><a href="dir_570da533bbf3cb08878b63b1506cbd81.html">main</a></li><li class="navelem"><a href="wifi__sta_8h.html">wifi_sta.h</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

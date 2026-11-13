@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.18.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ESP32 - OTA e Inteligencia Artificial: Archivo de código fuente C:/Users/LILY/Downloads/ESP32_Proyecto/AI_ESP32/main/main.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="codefolding.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">ESP32 - OTA e Inteligencia Artificial<span id="projectnumber">&#160;1.0.0</span>
+   </div>
+   <div id="projectbrief">OTA por HTTPS, K-Means y TinyML Monitor con SHT31</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.18.0 -->
+<script type="text/javascript">
+let searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded', codefold.init);
+</script>
+<script type="application/json" id="doxygen-config">
+{
+  "relPath": "",
+  "generateTreeView": true,
+  "searchEngine": true,
+  "serverBasedSearch": false,
+  "disableIndex": false,
+  "dynamicMenus": true,
+  "fullSidebar": false
+}
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<div id="main-nav-mobile">
+<div class="sm sm-dox"><input id="main-menu-state" type="checkbox"/>
+<label class="main-menu-btn" for="main-menu-state">
+<span class="main-menu-btn-icon"></span> Toggle main menu visibility</label>
+<span id="searchBoxPos1"></span>
+</div>
+</div><!-- main-nav-mobile -->
+<div id="main-nav">
+  <ul class="sm sm-dox" id="main-menu">
+    <li id="searchBoxPos2">
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect" class="search-icon"><span class="search-icon-dropdown"></span></span>
+          <input type="text" id="MSearchField" value="" placeholder="Buscar" accesskey="S"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><div id="MSearchCloseImg" class="close-icon"></div></a>
+          </span>
+        </div>
+    </li>
+  </ul>
+</div><!-- main-nav -->
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+document.addEventListener('DOMContentLoaded',() => { initNavTree('_a_i___e_s_p32_2main_2main_8c_source.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Cargando...</div>
+<div class="SRStatus" id="Searching">Buscando...</div>
+<div class="SRStatus" id="NoMatches">Nada coincide</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">main.c</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_a_i___e_s_p32_2main_2main_8c.html">Ir a la documentación de este archivo.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &lt;stddef.h&gt;</span></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="preprocessor">#include &quot;esp_log.h&quot;</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#include &quot;freertos/FreeRTOS.h&quot;</span></div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#include &quot;freertos/task.h&quot;</span></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="preprocessor">#include &quot;sdkconfig.h&quot;</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="preprocessor">#include &quot;<a class="code" href="kmeans_8h.html">kmeans.h</a>&quot;</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="preprocessor">#include &quot;<a class="code" href="tinyml__monitor_8h.html">tinyml_monitor.h</a>&quot;</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="preprocessor">#include &quot;<a class="code" href="sht31_8h.html">sht31.h</a>&quot;</span></div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">   20</a></span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a> = <span class="stringliteral">&quot;AI_ESP32&quot;</span>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#ifdef CONFIG_AI_USE_SIMULATED_SAMPLES</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="keyword">typedef</span> <span class="keyword">struct </span>{ <span class="keywordtype">float</span> t; <span class="keywordtype">float</span> rh; } sample_t;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">static</span> <span class="keyword">const</span> sample_t k_samples[] = {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    {16.2f, 72.0f}, {23.8f, 52.0f}, {37.5f, 88.0f}, {25.0f, 48.0f},   <span class="comment">/* kmeans.c */</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    {24.5f, 58.0f}, {25.1f, 62.0f}, {38.5f, 95.0f}, {22.0f, 15.0f}    <span class="comment">/* randomforest.c */</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>};</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span></div>
+<div class="foldopen" id="foldopen00039" data-start="{" data-end="}">
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno"><a class="line" href="_a_i___e_s_p32_2main_2main_8c.html#acf6aad37d9f00aaa740ca0e74e663b85">   39</a></span><span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="_a_i___e_s_p32_2main_2main_8c.html#acf6aad37d9f00aaa740ca0e74e663b85">run_inference</a>(<span class="keywordtype">int</span> idx, <span class="keywordtype">float</span> t, <span class="keywordtype">float</span> rh)</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>{</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_struct" href="structkmeans__result__t.html">kmeans_result_t</a> km;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <a class="code hl_struct" href="structsensor__insights__t.html">sensor_insights_t</a> ins;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;---------------------------------------------&quot;</span>);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;Muestra [%d] -&gt; T: %.2f °C | RH: %.2f %%&quot;</span>, idx, t, rh);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="kmeans_8c.html#a6b222a7db4099c71cd07cd42ca0e8696">kmeans_predict</a>(t, rh, &amp;km) == ESP_OK) {</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;[K-Means] Cluster: ID %d [%s] | Distancia: %.4f&quot;</span>,</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>                 km.<a class="code hl_variable" href="structkmeans__result__t.html#a218e16392564556e21a14113779547eb">cluster_id</a>, km.<a class="code hl_variable" href="structkmeans__result__t.html#ad7b633810ad8d453677916111d1ea298">cluster_label</a>, km.<a class="code hl_variable" href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">min_distance</a>);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        ESP_LOGE(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;[K-Means] Entrada invalida&quot;</span>);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="tinyml__monitor_8c.html#a1eb7c1220361a4cb79f60968bf42a469">tinyml_monitor_process</a>(t, rh, &amp;ins) == ESP_OK) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;[TinyML] Rocío: %.2f °C | VPD: %.2f kPa&quot;</span>, ins.<a class="code hl_variable" href="structsensor__insights__t.html#a509e6f78bac5ecb9e1ca0934f9a6d2f3">dew_point_c</a>, ins.<a class="code hl_variable" href="structsensor__insights__t.html#aee4b0a2690e875d9acc58d69821fdd11">vpd_kpa</a>);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;[TinyML] Score: %.2f | Estado: %s&quot;</span>, ins.<a class="code hl_variable" href="structsensor__insights__t.html#a3a49f585e6789f0cbf24ff5662d0676b">anomaly_score</a>,</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>                 ins.<a class="code hl_variable" href="structsensor__insights__t.html#aa822d5afc7cd3e2ae2fbc6c8d146305b">is_anomaly</a> ? <span class="stringliteral">&quot;ANOMALÍA DETECTADA&quot;</span> : <span class="stringliteral">&quot;NORMAL&quot;</span>);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        <span class="keywordflow">if</span> (ins.<a class="code hl_variable" href="structsensor__insights__t.html#aa822d5afc7cd3e2ae2fbc6c8d146305b">is_anomaly</a>) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            ESP_LOGW(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;-&gt; Evento atípico (hook para MicroSD / muestreo adaptativo: pendiente de implementar)&quot;</span>);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        ESP_LOGE(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;[TinyML] Lectura fuera de rango&quot;</span>);</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span></div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="_a_i___e_s_p32_2main_2main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">   69</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="_o_t_a_2main_2main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a>(<span class="keywordtype">void</span>)</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;Iniciando inferencia K-Means y TinyML Monitor...&quot;</span>);</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#ifdef CONFIG_AI_USE_SIMULATED_SAMPLES</span></div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    ESP_LOGW(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;Modo simulado: no se usa el sensor SHT31&quot;</span>);</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; <span class="keyword">sizeof</span>(k_samples) / <span class="keyword">sizeof</span>(k_samples[0]); i++) {</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <a class="code hl_function" href="_a_i___e_s_p32_2main_2main_8c.html#acf6aad37d9f00aaa740ca0e74e663b85">run_inference</a>((<span class="keywordtype">int</span>)i + 1, k_samples[i].t, k_samples[i].rh);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        vTaskDelay(pdMS_TO_TICKS(CONFIG_AI_SAMPLE_PERIOD_MS));</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    ESP_LOGI(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;Fin de las muestras simuladas&quot;</span>);</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    esp_err_t err = <a class="code hl_function" href="sht31_8c.html#ae397a2daa2b02b0ac20f5f6870217c4e">sht31_init</a>(CONFIG_SHT31_I2C_SDA_GPIO, CONFIG_SHT31_I2C_SCL_GPIO,</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>                               CONFIG_SHT31_I2C_ADDR, CONFIG_SHT31_I2C_FREQ_HZ,</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>#ifdef CONFIG_SHT31_INTERNAL_PULLUP</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>                               <span class="keyword">true</span>);</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span><span class="preprocessor">#else</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>                               <span class="keyword">false</span>);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">if</span> (err != ESP_OK) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        ESP_LOGE(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;No se pudo iniciar el SHT31 (%s)&quot;</span>, esp_err_to_name(err));</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    }</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> n = 1; ; n++) {</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>        <span class="keywordtype">float</span> t, rh;</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>        err = <a class="code hl_function" href="sht31_8c.html#ab57d3690ec90402e7f19932eb6dd3383">sht31_read</a>(&amp;t, &amp;rh);</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>        <span class="keywordflow">if</span> (err == ESP_OK) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            <a class="code hl_function" href="_a_i___e_s_p32_2main_2main_8c.html#acf6aad37d9f00aaa740ca0e74e663b85">run_inference</a>(n, t, rh);</div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>            ESP_LOGE(<a class="code hl_variable" href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a>, <span class="stringliteral">&quot;Fallo de lectura SHT31 (%s)&quot;</span>, esp_err_to_name(err));</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>        }</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        vTaskDelay(pdMS_TO_TICKS(CONFIG_AI_SAMPLE_PERIOD_MS));</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    }</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>}</div>
+</div>
+<div class="ttc" id="a_a_i___e_s_p32_2main_2main_8c_html_a5a85b9c772bbeb480b209a3e6ea92b4c"><div class="ttname"><a href="_a_i___e_s_p32_2main_2main_8c.html#a5a85b9c772bbeb480b209a3e6ea92b4c">TAG</a></div><div class="ttdeci">static const char * TAG</div><div class="ttdef"><b>Definición</b> <a href="#l00020">main.c:20</a></div></div>
+<div class="ttc" id="a_a_i___e_s_p32_2main_2main_8c_html_acf6aad37d9f00aaa740ca0e74e663b85"><div class="ttname"><a href="_a_i___e_s_p32_2main_2main_8c.html#acf6aad37d9f00aaa740ca0e74e663b85">run_inference</a></div><div class="ttdeci">static void run_inference(int idx, float t, float rh)</div><div class="ttdoc">Ejecuta ambos algoritmos sobre una lectura y la muestra por consola.</div><div class="ttdef"><b>Definición</b> <a href="#l00039">main.c:39</a></div></div>
+<div class="ttc" id="a_o_t_a_2main_2main_8c_html_a630544a7f0a2cc40d8a7fefab7e2fe70"><div class="ttname"><a href="_o_t_a_2main_2main_8c.html#a630544a7f0a2cc40d8a7fefab7e2fe70">app_main</a></div><div class="ttdeci">void app_main(void)</div><div class="ttdoc">Punto de entrada: inicializa NVS y red, conecta Wi-Fi y lanza la OTA.</div><div class="ttdef"><b>Definición</b> <a href="_o_t_a_2main_2main_8c_source.html#l00027">main.c:27</a></div></div>
+<div class="ttc" id="akmeans_8c_html_a6b222a7db4099c71cd07cd42ca0e8696"><div class="ttname"><a href="kmeans_8c.html#a6b222a7db4099c71cd07cd42ca0e8696">kmeans_predict</a></div><div class="ttdeci">esp_err_t kmeans_predict(float temp, float humidity, kmeans_result_t *result)</div><div class="ttdoc">Clasifica una muestra [Temp, RH] en el cluster mas cercano.</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8c_source.html#l00051">kmeans.c:51</a></div></div>
+<div class="ttc" id="akmeans_8h_html"><div class="ttname"><a href="kmeans_8h.html">kmeans.h</a></div><div class="ttdoc">Clasificacion ambiental con K-Means (K = 3) sobre temperatura y humedad.</div></div>
+<div class="ttc" id="asht31_8c_html_ab57d3690ec90402e7f19932eb6dd3383"><div class="ttname"><a href="sht31_8c.html#ab57d3690ec90402e7f19932eb6dd3383">sht31_read</a></div><div class="ttdeci">esp_err_t sht31_read(float *temp_c, float *humidity_pct)</div><div class="ttdoc">Realiza una medicion unica (alta repeticion, sin clock stretching).</div><div class="ttdef"><b>Definición</b> <a href="sht31_8c_source.html#l00083">sht31.c:83</a></div></div>
+<div class="ttc" id="asht31_8c_html_ae397a2daa2b02b0ac20f5f6870217c4e"><div class="ttname"><a href="sht31_8c.html#ae397a2daa2b02b0ac20f5f6870217c4e">sht31_init</a></div><div class="ttdeci">esp_err_t sht31_init(int sda_gpio, int scl_gpio, uint8_t addr, uint32_t freq_hz, bool pullup)</div><div class="ttdoc">Inicializa el bus I2C y registra el SHT31.</div><div class="ttdef"><b>Definición</b> <a href="sht31_8c_source.html#l00045">sht31.c:45</a></div></div>
+<div class="ttc" id="asht31_8h_html"><div class="ttname"><a href="sht31_8h.html">sht31.h</a></div><div class="ttdoc">Driver minimo I2C del sensor SHT31 (medicion unica) para ESP-IDF.</div></div>
+<div class="ttc" id="astructkmeans__result__t_html"><div class="ttname"><a href="structkmeans__result__t.html">kmeans_result_t</a></div><div class="ttdoc">Resultado de la inferencia K-Means.</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00026">kmeans.h:26</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html_a1bff0f58edd5df5ba9db3545871c30e8"><div class="ttname"><a href="structkmeans__result__t.html#a1bff0f58edd5df5ba9db3545871c30e8">kmeans_result_t::min_distance</a></div><div class="ttdeci">float min_distance</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00029">kmeans.h:29</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html_a218e16392564556e21a14113779547eb"><div class="ttname"><a href="structkmeans__result__t.html#a218e16392564556e21a14113779547eb">kmeans_result_t::cluster_id</a></div><div class="ttdeci">int cluster_id</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00027">kmeans.h:27</a></div></div>
+<div class="ttc" id="astructkmeans__result__t_html_ad7b633810ad8d453677916111d1ea298"><div class="ttname"><a href="structkmeans__result__t.html#ad7b633810ad8d453677916111d1ea298">kmeans_result_t::cluster_label</a></div><div class="ttdeci">const char * cluster_label</div><div class="ttdef"><b>Definición</b> <a href="kmeans_8h_source.html#l00028">kmeans.h:28</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html"><div class="ttname"><a href="structsensor__insights__t.html">sensor_insights_t</a></div><div class="ttdoc">Resultado del procesamiento de una lectura.</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8h_source.html#l00023">tinyml_monitor.h:23</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_a3a49f585e6789f0cbf24ff5662d0676b"><div class="ttname"><a href="structsensor__insights__t.html#a3a49f585e6789f0cbf24ff5662d0676b">sensor_insights_t::anomaly_score</a></div><div class="ttdeci">float anomaly_score</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8h_source.html#l00028">tinyml_monitor.h:28</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_a509e6f78bac5ecb9e1ca0934f9a6d2f3"><div class="ttname"><a href="structsensor__insights__t.html#a509e6f78bac5ecb9e1ca0934f9a6d2f3">sensor_insights_t::dew_point_c</a></div><div class="ttdeci">float dew_point_c</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8h_source.html#l00026">tinyml_monitor.h:26</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_aa822d5afc7cd3e2ae2fbc6c8d146305b"><div class="ttname"><a href="structsensor__insights__t.html#aa822d5afc7cd3e2ae2fbc6c8d146305b">sensor_insights_t::is_anomaly</a></div><div class="ttdeci">bool is_anomaly</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8h_source.html#l00029">tinyml_monitor.h:29</a></div></div>
+<div class="ttc" id="astructsensor__insights__t_html_aee4b0a2690e875d9acc58d69821fdd11"><div class="ttname"><a href="structsensor__insights__t.html#aee4b0a2690e875d9acc58d69821fdd11">sensor_insights_t::vpd_kpa</a></div><div class="ttdeci">float vpd_kpa</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8h_source.html#l00027">tinyml_monitor.h:27</a></div></div>
+<div class="ttc" id="atinyml__monitor_8c_html_a1eb7c1220361a4cb79f60968bf42a469"><div class="ttname"><a href="tinyml__monitor_8c.html#a1eb7c1220361a4cb79f60968bf42a469">tinyml_monitor_process</a></div><div class="ttdeci">esp_err_t tinyml_monitor_process(float temp_c, float humidity_pct, sensor_insights_t *out)</div><div class="ttdoc">Procesa una lectura: punto de rocio, VPD y deteccion de anomalia.</div><div class="ttdef"><b>Definición</b> <a href="tinyml__monitor_8c_source.html#l00052">tinyml_monitor.c:52</a></div></div>
+<div class="ttc" id="atinyml__monitor_8h_html"><div class="ttname"><a href="tinyml__monitor_8h.html">tinyml_monitor.h</a></div><div class="ttdoc">Monitor TinyML: deteccion de anomalias con Z-Score bivariado y distancia euclidiana.</div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_3f145e4dd0e30461c9c1a4b980939627.html">AI_ESP32</a></li><li class="navelem"><a href="dir_956f94f7e9d431fc4cb7310cb9a78512.html">main</a></li><li class="navelem"><a href="_a_i___e_s_p32_2main_2main_8c.html">main.c</a></li>
+    <li class="footer">Generado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.18.0 </li>
+  </ul>
+</div>
+</body>
+</html>

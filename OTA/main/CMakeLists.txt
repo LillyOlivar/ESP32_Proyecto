@@ -1,5 +1,5 @@
 # El certificado debe existir antes de compilar (ver server/gen_cert.sh)
-if(NOT EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/certs/server.crt")
+if(NOT EXISTS "${CMAKE_CURRENT_LIST_DIR}/certs/server.crt")
     message(FATAL_ERROR "Falta main/certs/server.crt. Ejecute server/gen_cert.sh <IP_DEL_PC> antes de compilar.")
 endif()
 
@@ -11,3 +11,4 @@ idf_component_register(
     PRIV_REQUIRES esp_https_ota esp_http_client app_update esp_wifi esp_event esp_netif nvs_flash esp_system
     EMBED_TXTFILES "certs/server.crt"
 )
+
